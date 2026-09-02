@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll Animation</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scroll-container {
+            position: relative;
+        }
+
+        #section-1 {
+            height: 600vh; /* 300 frames */
+        }
+
+        #section-3 {
+            height: 1000vh; /* 616 frames */
+        }
+
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .black-section {
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-b from-black/80 via-black/30 to-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <button class="flex items-center gap-3 text-left group focus:outline-none">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400/20 to-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-400 group-hover:border-amber-400 transition-colors shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg sm:text-xl tracking-tight text-white group-hover:text-amber-300 transition-colors block leading-none">
+                            CORNER SQUARE
+                        </span>
+                        <p class="text-[10px] tracking-widest text-slate-400 uppercase font-medium mt-1">
+                            Commercial Building
+                        </p>
+                    </div>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <button class="px-4 py-2 text-xs lg:text-sm font-medium text-slate-200 hover:text-white hover:bg-white/5 rounded-md transition-colors">Home</button>
+                    <button class="px-4 py-2 text-xs lg:text-sm font-medium text-slate-200 hover:text-amber-300 hover:bg-amber-400/10 rounded-md transition-colors">Available Space</button>
+                    <button class="px-4 py-2 text-xs lg:text-sm font-medium text-slate-200 hover:text-white hover:bg-white/5 rounded-md transition-colors">Amenities</button>
+                    <button class="px-4 py-2 text-xs lg:text-sm font-medium text-slate-200 hover:text-white hover:bg-white/5 rounded-md transition-colors">Location</button>
+                </nav>
+
+                <!-- Right Action -->
+                <div class="flex items-center gap-3">
+                    <button class="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold text-xs sm:text-sm tracking-wide transition-all duration-200 shadow-lg hover:shadow-amber-400/20 flex items-center gap-1.5 active:scale-95">
+                        <span>Inquire Now</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: First Scroll Animation (frame1) -->
+    <div class="scroll-container" id="section-1">
+        <div class="sticky-container">
+            <canvas id="canvas-1"></canvas>
+            
+            <!-- Global Dark Overlay for Text Visibility (replaces the box blur) -->
+            <div id="global-overlay" class="absolute inset-0 bg-black/40 pointer-events-none z-10 transition-opacity duration-300"></div>
+            
+            <!-- Hero Overlay UI -->
+            <div id="hero-overlay" class="absolute inset-0 z-20 pointer-events-none flex flex-col justify-center pt-24 pb-16 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto transition-opacity duration-300" style="opacity: 1; transform: translateY(0px);">
+              
+              <!-- Content Wrapper -->
+              <div class="max-w-2xl w-full">
+                
+                <!-- Text Slides Container -->
+                <div class="relative h-[280px] sm:h-[220px] w-full">
+                  <!-- SLIDE 1 -->
+                  <div id="slide-0" class="absolute inset-0 transition-all duration-700 ease-out opacity-100 translate-y-0">
+                      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-3 sm:mb-4 shadow-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400 animate-pulse"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                          <span>PREMIUM COMMERCIAL SPACES</span>
+                      </div>
+                      <h1 class="font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-[1.05] mb-2 sm:mb-3 uppercase drop-shadow-lg">
+                          CORNER SQUARE <br />
+                          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                              COMMERCIAL BUILDING
+                          </span>
+                      </h1>
+                      <div class="flex items-center gap-2.5 mb-3 sm:mb-4">
+                          <div class="h-0.5 w-6 bg-amber-400"></div>
+                          <h2 class="text-sm sm:text-base font-bold tracking-normal text-amber-400 uppercase drop-shadow-md">
+                              NOW AVAILABLE FOR LEASE
+                          </h2>
+                      </div>
+                      <p class="text-xs sm:text-sm lg:text-base text-slate-200 font-normal leading-relaxed mb-6 shadow-md drop-shadow-md">
+                          A modern commercial destination offering premium and flexible spaces for offices, retail, businesses, and professional enterprises.
+                      </p>
+                  </div>
+
+                  <!-- SLIDE 2 -->
+                  <div id="slide-1" class="absolute inset-0 transition-all duration-700 ease-out opacity-0 translate-y-8 pointer-events-none">
+                      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-400/10 border border-blue-400/30 text-blue-300 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-3 sm:mb-4 shadow-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 animate-pulse"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                          <span>FLEXIBLE LEASING OPTIONS</span>
+                      </div>
+                      <h1 class="font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-[1.05] mb-2 sm:mb-3 uppercase drop-shadow-lg">
+                          DESIGNED FOR <br />
+                          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                              EVERY BUSINESS
+                          </span>
+                      </h1>
+                      <div class="flex items-center gap-2.5 mb-3 sm:mb-4">
+                          <div class="h-0.5 w-6 bg-blue-400"></div>
+                          <h2 class="text-sm sm:text-base font-bold tracking-normal text-blue-400 uppercase drop-shadow-md">
+                              RETAIL & OFFICE READY
+                          </h2>
+                      </div>
+                      <p class="text-xs sm:text-sm lg:text-base text-slate-200 font-normal leading-relaxed mb-6 shadow-md drop-shadow-md">
+                          From expansive showrooms to high-efficiency private suites, find the perfect configuration to scale your operations dynamically.
+                      </p>
+                  </div>
+
+                  <!-- SLIDE 3 -->
+                  <div id="slide-2" class="absolute inset-0 transition-all duration-700 ease-out opacity-0 translate-y-8 pointer-events-none">
+                      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-emerald-300 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-3 sm:mb-4 shadow-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400 animate-pulse"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                          <span>STATE-OF-THE-ART</span>
+                      </div>
+                      <h1 class="font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-[1.05] mb-2 sm:mb-3 uppercase drop-shadow-lg">
+                          STRATEGICALLY <br />
+                          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                              LOCATED
+                          </span>
+                      </h1>
+                      <div class="flex items-center gap-2.5 mb-3 sm:mb-4">
+                          <div class="h-0.5 w-6 bg-emerald-400"></div>
+                          <h2 class="text-sm sm:text-base font-bold tracking-normal text-emerald-400 uppercase drop-shadow-md">
+                              AT THE CENTER OF COMMERCE
+                          </h2>
+                      </div>
+                      <p class="text-xs sm:text-sm lg:text-base text-slate-200 font-normal leading-relaxed mb-6 shadow-md drop-shadow-md">
+                          Position your brand where growth happens. Experience unmatched accessibility, heavy foot traffic, and eco-friendly infrastructure.
+                      </p>
+                  </div>
+                </div>
+
+                <!-- Persistent CTA Buttons placed normally in flow, no more overlap -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pointer-events-auto z-30 mt-4 sm:mt-8">
+                  <button class="px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-xl hover:shadow-amber-400/25 flex items-center justify-center gap-2 group transform active:scale-95" id="hero-explore-spaces-btn">
+                    <span>Explore Spaces</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </button>
+
+                  <button class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm tracking-wide uppercase backdrop-blur-md border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2 group transform active:scale-95" id="hero-inquire-now-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>Inquire Now</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Building Amenities -->
+    <section id="amenities-section" class="bg-[#080b10] py-20 px-4 sm:px-6 lg:px-8 relative z-30">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-4">
+                <div>
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-3">
+                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Modern Commercial Engineering</span>
+                  </div>
+                  <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight" style="font-family: system-ui, sans-serif;">
+                    Building Specifications & Amenities
+                  </h2>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-md">
+                  Designed with enterprise-grade sustainability, 100% operational resilience, and refined tenant comfort.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Solar -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all hover:bg-white/[0.07]">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                  </div>
+                  <h3 class="font-bold text-lg text-white mb-2" style="font-family: system-ui, sans-serif;">
+                    65kWp Rooftop Solar PV
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                    Dedicated rooftop solar array generating clean renewable energy, directly offsetting common area power consumption, exterior illumination, and HVAC loads.
+                  </p>
+                  <div class="text-[11px] font-mono text-amber-300">● Lowers Common Area Dues</div>
+                </div>
+
+                <!-- Generator -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all hover:bg-white/[0.07]">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  </div>
+                  <h3 class="font-bold text-lg text-white mb-2" style="font-family: system-ui, sans-serif;">
+                    100% Back-up Generator
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                    High-capacity automatic diesel generator and dual 500kVA transformers guaranteeing uninterrupted 24/7 business operations during grid outages.
+                  </p>
+                  <div class="text-[11px] font-mono text-amber-300">● Automatic Transfer Switch (ATS)</div>
+                </div>
+
+                <!-- Glass -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all hover:bg-white/[0.07]">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>
+                  </div>
+                  <h3 class="font-bold text-lg text-white mb-2" style="font-family: system-ui, sans-serif;">
+                    Low-E Thermal Curtain Glass
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                    Double-glazed Low-E floor-to-ceiling glass assemblies with acoustic dampening and thermal breaks to eliminate solar glare while flooding interiors with natural light.
+                  </p>
+                  <div class="text-[11px] font-mono text-amber-300">● 4.8m Ground Ceiling Clearance</div>
+                </div>
+
+                <!-- VRF -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all hover:bg-white/[0.07]">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>
+                  </div>
+                  <h3 class="font-bold text-lg text-white mb-2" style="font-family: system-ui, sans-serif;">
+                    Inverter VRF Air Conditioning
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                    Independent multi-zone Inverter Variable Refrigerant Flow (VRF) units paired with MERV-13 air filtration systems for superior occupant indoor air quality.
+                  </p>
+                  <div class="text-[11px] font-mono text-amber-300">● Individual Tenant Sub-Metering</div>
+                </div>
+
+                <!-- Fiber -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all hover:bg-white/[0.07]">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                  </div>
+                  <h3 class="font-bold text-lg text-white mb-2" style="font-family: system-ui, sans-serif;">
+                    Dual Fiber Optic Backbone
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                    Redundant, carrier-neutral high-speed fiber telecom risers designed for financial institutions, tech studios, and data-intensive enterprise workloads.
+                  </p>
+                  <div class="text-[11px] font-mono text-amber-300">● Multiple Tier-1 Providers</div>
+                </div>
+
+                <!-- Parking -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-amber-400/30 transition-all hover:bg-white/[0.07]">
+                  <div class="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 mb-4">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                  </div>
+                  <h3 class="font-bold text-lg text-white mb-2" style="font-family: system-ui, sans-serif;">
+                    Paved Forecourt & Parking
+                  </h3>
+                  <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                    Spacious vehicular drop-off roundabout, designated tenant and customer parking stalls, service loading zones, and tropical landscape planters.
+                  </p>
+                  <div class="text-[11px] font-mono text-amber-300">● 24/7 CCTV & Security Detail</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Second Scroll Animation (frame2) -->
+    <div class="scroll-container" id="section-3">
+        <div class="sticky-container">
+            <canvas id="canvas-2"></canvas>
+
+            <!-- Cinematic Storytelling Card -->
+            <div id="story-card" class="absolute bottom-5 left-5 right-5 md:left-auto md:right-10 md:bottom-10 lg:right-14 lg:bottom-14 z-20 pointer-events-none transition-all duration-1000 ease-out opacity-0 translate-y-6 md:w-full md:max-w-[420px]">
+                <div class="bg-black/70 backdrop-blur-2xl border border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] rounded-[20px] md:rounded-[24px] relative overflow-hidden" style="min-height: 250px;">
+                    
+                    <!-- Slide 1 (Frames 1-100) -->
+                    <div id="story-slide-0" class="absolute inset-0 p-7 md:p-9 transition-all duration-700 ease-out opacity-100 translate-y-0 flex flex-col justify-center">
+                        <div class="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-2">WELCOME</div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug mb-3"><span class="text-amber-400">ENTER</span> CORNERSQUARE</h2>
+                        <p class="text-[13px] md:text-sm text-slate-300 leading-relaxed font-medium">A modern destination designed to make a powerful first impression.</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="h-[2px] flex-1 bg-white/15"><div class="h-full bg-white story-progress-line shadow-[0_0_10px_rgba(255,255,255,0.5)]" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 (Frames 101-200) -->
+                    <div id="story-slide-1" class="absolute inset-0 p-7 md:p-9 transition-all duration-700 ease-out opacity-0 translate-y-6 flex flex-col justify-center pointer-events-none">
+                        <div class="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-2">THE ARRIVAL</div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug mb-3"><span class="text-amber-400">THE</span> LOBBY</h2>
+                        <p class="text-[13px] md:text-sm text-slate-300 leading-relaxed font-medium">A welcoming and refined arrival experience designed with modern architecture, natural light, and premium finishes.</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="h-[2px] flex-1 bg-white/15"><div class="h-full bg-white story-progress-line shadow-[0_0_10px_rgba(255,255,255,0.5)]" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 (Frames 201-300) -->
+                    <div id="story-slide-2" class="absolute inset-0 p-7 md:p-9 transition-all duration-700 ease-out opacity-0 translate-y-6 flex flex-col justify-center pointer-events-none">
+                        <div class="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-2">GATHER & CONNECT</div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug mb-3"><span class="text-amber-400">THE</span> CAFÉ</h2>
+                        <p class="text-[13px] md:text-sm text-slate-300 leading-relaxed font-medium">A vibrant space where conversations, ideas, and everyday moments come together.</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="h-[2px] flex-1 bg-white/15"><div class="h-full bg-white story-progress-line shadow-[0_0_10px_rgba(255,255,255,0.5)]" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 (Frames 301-400) -->
+                    <div id="story-slide-3" class="absolute inset-0 p-7 md:p-9 transition-all duration-700 ease-out opacity-0 translate-y-6 flex flex-col justify-center pointer-events-none">
+                        <div class="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-2">CURATED EXPERIENCES</div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug mb-3"><span class="text-amber-400">THE</span> BOUTIQUE</h2>
+                        <p class="text-[13px] md:text-sm text-slate-300 leading-relaxed font-medium">Discover thoughtfully designed commercial spaces that bring lifestyle, convenience, and business together.</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="h-[2px] flex-1 bg-white/15"><div class="h-full bg-white story-progress-line shadow-[0_0_10px_rgba(255,255,255,0.5)]" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 (Frames 401-500) -->
+                    <div id="story-slide-4" class="absolute inset-0 p-7 md:p-9 transition-all duration-700 ease-out opacity-0 translate-y-6 flex flex-col justify-center pointer-events-none">
+                        <div class="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-2">BALANCE & WELLNESS</div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug mb-3"><span class="text-amber-400">A SPACE</span> TO RECHARGE</h2>
+                        <p class="text-[13px] md:text-sm text-slate-300 leading-relaxed font-medium">A dedicated environment that brings wellness and everyday balance into the CornerSquare experience.</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="h-[2px] flex-1 bg-white/15"><div class="h-full bg-white story-progress-line shadow-[0_0_10px_rgba(255,255,255,0.5)]" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 (Frames 501-600+) -->
+                    <div id="story-slide-5" class="absolute inset-0 p-7 md:p-9 transition-all duration-700 ease-out opacity-0 translate-y-6 flex flex-col justify-center pointer-events-none">
+                        <div class="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase mb-2">A NEW PERSPECTIVE</div>
+                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug mb-3"><span class="text-amber-400">DISCOVER</span> CORNERSQUARE</h2>
+                        <p class="text-[13px] md:text-sm text-slate-300 leading-relaxed font-medium">A premium commercial destination designed for businesses, experiences, and opportunities to grow.</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="h-[2px] flex-1 bg-white/15"><div class="h-full bg-white story-progress-line shadow-[0_0_10px_rgba(255,255,255,0.5)]" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Section 4: Available Spaces -->
+    <section id="available-spaces" class="py-24 bg-[#080b10] relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold tracking-[0.2em] text-amber-500 uppercase mb-3 block">LEASING OPPORTUNITIES</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">Available Spaces</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                <!-- Unit G-01 -->
+                <div class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">G-01</span>
+                            <span class="text-sm text-slate-400 ml-3">Ground Floor (Level 1)</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Prime Corner Retail & Flagship Showroom</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">The premier signature unit of Corner Square. Unmatched dual-street exposure, tall structural column framing, and direct access from the main entrance forecourt.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
+                            <span class="text-xl font-bold text-white">320 sqm <span class="text-sm font-normal text-slate-400">(3,444 sqft)</span></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling Height</span>
+                            <span class="text-xl font-bold text-white">4.80m</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
+                            <span class="text-white font-medium">28 meters double-sided glass frontage</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Direct entrance from curved illuminated stairway
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Maximum pedestrian & vehicular visibility
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Provisions for commercial exhaust & heavy power
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Floor-to-ceiling panoramic glass panels
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-auto">
+                        <div class="text-amber-400 font-bold">$45 / sqm / mo</div>
+                        <button class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
+                            INQUIRE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Unit G-02 -->
+                <div class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">G-02</span>
+                            <span class="text-sm text-slate-400 ml-3">Ground Floor (Level 1)</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Boutique Commercial & Banking Hall</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">Ideal for premium financial institutions, high-end optical/medical clinics, or specialized retail concepts looking for prominent ground level presence.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
+                            <span class="text-xl font-bold text-white">185 sqm <span class="text-sm font-normal text-slate-400">(1,991 sqft)</span></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling Height</span>
+                            <span class="text-xl font-bold text-white">4.50m</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
+                            <span class="text-white font-medium">16 meters glass facade</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Dedicated side driveway access & drop-off
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            High foot-traffic arterial exposure
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Plumbing stub-outs for pantry/restroom
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Energy-efficient VRF AC pre-installed
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-auto">
+                        <div class="text-amber-400 font-bold">$40 / sqm / mo</div>
+                        <button class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
+                            INQUIRE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Unit L2-01 -->
+                <div class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">L2-01</span>
+                            <span class="text-sm text-slate-400 ml-3">Second Floor (Level 2)</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Full Second-Floor Corporate Headquarters</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">An expansive, column-optimized creative office floorplate. High ceilings, panoramic natural light, and tranquil views of surrounding tropical landscaping.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
+                            <span class="text-xl font-bold text-white">680 sqm <span class="text-sm font-normal text-slate-400">(7,319 sqft)</span></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling Height</span>
+                            <span class="text-xl font-bold text-white">4.20m</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
+                            <span class="text-white font-medium">360° perimeter glass framing with tree canopy views</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Warm wood under-soffit cantilever perimeter
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Abundant natural daylight from 4 elevations
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Dual high-speed telecom fiber feeds
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Subdivisible into 2 equal wings (340 sqm each)
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-auto">
+                        <div class="text-amber-400 font-bold">$32 / sqm / mo</div>
+                        <button class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
+                            INQUIRE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Unit L2-02 -->
+                <div class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">L2-02</span>
+                            <span class="text-sm text-slate-400 ml-3">Second Floor (Level 2)</span>
+                            <h3 class="text-2xl font-bold text-white mb-2">Executive Tech & Creative Studio Suite</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">Tailored for innovative tech firms, law partnerships, and design consultancies seeking an inspiring, sustainable workspace with world-class presence.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
+                            <span class="text-xl font-bold text-white">265 sqm <span class="text-sm font-normal text-slate-400">(2,852 sqft)</span></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling Height</span>
+                            <span class="text-xl font-bold text-white">4.20m</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
+                            <span class="text-white font-medium">East & South panoramic glazing</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Turnkey open-plan architectural layout
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Acoustically insulated double-pane glass
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Direct access to rooftop terrace & executive lounge
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            100% solar and generator emergency backup
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-auto">
+                        <div class="text-amber-400 font-bold">$34 / sqm / mo</div>
+                        <button class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
+                            INQUIRE
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: CTA / Inquiry -->
+    <section class="py-32 relative overflow-hidden bg-black border-t border-white/5">
+        <div class="absolute inset-0 bg-gradient-to-t from-amber-500/10 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+            <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">Secure Your Position.</h2>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">Corner Square offers an unparalleled environment for businesses seeking distinction. Connect with our leasing team for private viewings and architectural plans.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold tracking-wide transition-colors">
+                    CONTACT LEASING TEAM
+                </button>
+                <button class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-bold tracking-wide transition-colors">
+                    DOWNLOAD BROCHURE
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#05070a] border-t border-white/10 py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-display font-bold tracking-tight text-white mb-4">CORNERSQUARE</div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        A premium commercial destination designed for businesses, experiences, and opportunities to grow. Unmatched architecture and thoughtful design.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 tracking-wider text-sm">SPACES</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Ground Floor Retail</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Boutique Commercial</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Corporate Headquarters</a></li>
+                        <li><a href="#" class="hover:text-amber-500 transition-colors">Executive Studios</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 tracking-wider text-sm">CONTACT</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li>leasing@cornersquare.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li class="pt-2">
+                            100 Corner Square Ave,<br>
+                            Innovation District, CA 90210
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-xs text-slate-500">
+                <p>&copy; 2026 Corner Square Commercial. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Navbar Scroll Logic ---
+        const navbar = document.getElementById('main-navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.className = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#080b10]/90 backdrop-blur-md py-3.5 border-b border-white/10 shadow-2xl";
+            } else {
+                navbar.className = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gradient-to-b from-black/80 via-black/30 to-transparent py-5";
+            }
+        });
+
+        // --- Generic Scroll Animation Framework ---
+        function createScrollAnimation({ canvasId, containerId, frameCount, framePathFn, onScroll }) {
+            const canvas = document.getElementById(canvasId);
+            const context = canvas.getContext("2d");
+            const container = document.getElementById(containerId);
+
+            const images = [];
+            let loadedImages = 0;
+            
+            const preloadImages = () => {
+                for (let i = 1; i <= frameCount; i++) {
+                    const img = new Image();
+                    img.src = framePathFn(i);
+                    img.onload = () => {
+                        loadedImages++;
+                        if (i === 1) drawFrame(1);
+                    };
+                    images.push(img);
+                }
+            };
+
+            const drawFrame = (frameIndex) => {
+                const img = images[frameIndex - 1];
+                if (!img || !img.complete) return;
+
+                const canvasRatio = canvas.width / canvas.height;
+                const imgRatio = img.width / img.height;
+
+                let drawWidth, drawHeight, offsetX = 0, offsetY = 0;
+
+                if (canvasRatio > imgRatio) {
+                    drawWidth = canvas.width;
+                    drawHeight = canvas.width / imgRatio;
+                    offsetY = (canvas.height - drawHeight) / 2;
+                } else {
+                    drawHeight = canvas.height;
+                    drawWidth = canvas.height * imgRatio;
+                    offsetX = (canvas.width - drawWidth) / 2;
+                }
+
+                context.imageSmoothingEnabled = true;
+                context.imageSmoothingQuality = "high";
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+            };
+
+            const resizeCanvas = () => {
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                context.scale(dpr, dpr);
+                
+                const frameToDraw = Math.round(currentRenderedFrame);
+                if (images[frameToDraw - 1]) drawFrame(frameToDraw);
+            };
+
+            window.addEventListener('resize', resizeCanvas);
+
+            let targetFrame = 1;
+            let currentRenderedFrame = 1;
+
+            const updateTargetFrame = () => {
+                const rect = container.getBoundingClientRect();
+                const scrollDistance = -rect.top;
+                const maxScrollable = rect.height - window.innerHeight;
+                
+                let scrollFraction = maxScrollable > 0 ? scrollDistance / maxScrollable : 0;
+                scrollFraction = Math.max(0, Math.min(1, scrollFraction));
+                
+                if (onScroll) onScroll(scrollFraction);
+                
+                targetFrame = Math.min(
+                    frameCount,
+                    Math.max(1, Math.ceil(scrollFraction * frameCount))
+                );
+            };
+
+            window.addEventListener('scroll', updateTargetFrame);
+
+            const renderLoop = () => {
+                currentRenderedFrame += (targetFrame - currentRenderedFrame) * 0.08;
+                const frameToDraw = Math.round(currentRenderedFrame);
+                if (images[frameToDraw - 1] && images[frameToDraw - 1].complete) {
+                    drawFrame(frameToDraw);
+                }
+                requestAnimationFrame(renderLoop);
+            };
+
+            resizeCanvas();
+            preloadImages();
+            updateTargetFrame();
+            renderLoop();
+        }
+
+        // --- Initialize Animations ---
+
+        // Animation 1 (Hero Section) with 3-phase text transitions
+        const heroOverlay = document.getElementById('hero-overlay');
+        const globalOverlay = document.getElementById('global-overlay');
+
+        createScrollAnimation({
+            canvasId: "canvas-1",
+            containerId: "section-1",
+            frameCount: 300,
+            framePathFn: (index) => `./frame1/frame_${index}.jpg`,
+            onScroll: (progress) => {
+                // Fade out the entire overlay ONLY at the very end (last 5% of scroll)
+                // so it transitions smoothly into the next section
+                let mainOpacity = 1;
+                if (progress > 0.95) {
+                    mainOpacity = Math.max(0, 1 - (progress - 0.95) * 20);
+                }
+                
+                if (heroOverlay) {
+                    heroOverlay.style.opacity = mainOpacity;
+                    if (mainOpacity > 0.1) {
+                        heroOverlay.classList.remove('pointer-events-none');
+                        heroOverlay.style.pointerEvents = 'auto';
+                    } else {
+                        heroOverlay.classList.add('pointer-events-none');
+                        heroOverlay.style.pointerEvents = 'none';
+                    }
+                }
+
+                if (globalOverlay) {
+                    globalOverlay.style.opacity = mainOpacity;
+                }
+
+                // Smoothly determine which slide to show based on scroll progress
+                let currentSlide = 0;
+                if (progress < 0.33) {
+                    currentSlide = 0;
+                } else if (progress >= 0.33 && progress < 0.66) {
+                    currentSlide = 1;
+                } else {
+                    currentSlide = 2;
+                }
+
+                // Animate the 3 text slides
+                for (let i = 0; i < 3; i++) {
+                    const slide = document.getElementById(`slide-${i}`);
+                    if (!slide) continue;
+
+                    if (i === currentSlide) {
+                        // Fade IN current slide
+                        slide.style.opacity = '1';
+                        slide.style.transform = 'translateY(0)';
+                        slide.style.pointerEvents = 'auto';
+                    } else {
+                        // Fade OUT other slides
+                        slide.style.opacity = '0';
+                        // If it's a past slide, move it up. If it's a future slide, keep it down.
+                        slide.style.transform = i < currentSlide ? 'translateY(-20px)' : 'translateY(20px)';
+                        slide.style.pointerEvents = 'none';
+                    }
+                }
+            }
+        });
+
+        // Animation 2 (Third Section)
+        const storyCard = document.getElementById('story-card');
+        let storyCardVisible = false;
+
+        createScrollAnimation({
+            canvasId: "canvas-2",
+            containerId: "section-3",
+            frameCount: 616,
+            framePathFn: (index) => `./frame2/frame_${index}.jpg`,
+            onScroll: (progress) => {
+                // Elegant Entrance Animation when user reaches 1% of the sequence
+                if (progress > 0.01 && !storyCardVisible) {
+                    storyCardVisible = true;
+                    if (storyCard) {
+                        storyCard.style.opacity = '1';
+                        storyCard.style.transform = 'translateY(0)';
+                    }
+                } else if (progress <= 0.01 && storyCardVisible) {
+                    storyCardVisible = false;
+                    if (storyCard) {
+                        storyCard.style.opacity = '0';
+                        storyCard.style.transform = 'translateY(20px)';
+                    }
+                }
+
+                // Determine active section based on frame ranges
+                const frame = progress * 615 + 1; // 1 to 616
+                let currentSlide = 0;
+                
+                if (frame <= 100) {
+                    currentSlide = 0;
+                } else if (frame <= 200) {
+                    currentSlide = 1;
+                } else if (frame <= 300) {
+                    currentSlide = 2;
+                } else if (frame <= 400) {
+                    currentSlide = 3;
+                } else if (frame <= 500) {
+                    currentSlide = 4;
+                } else {
+                    currentSlide = 5;
+                }
+
+                // Update continuous progress line width
+                const progressLines = document.querySelectorAll('.story-progress-line');
+                const widthPercent = (progress * 100).toFixed(2) + '%';
+                progressLines.forEach(line => {
+                    line.style.width = widthPercent;
+                });
+
+                // Cross-fade slides with cinematic upward/downward drift
+                for (let i = 0; i < 6; i++) {
+                    const slide = document.getElementById(`story-slide-${i}`);
+                    if (!slide) continue;
+
+                    if (i === currentSlide) {
+                        slide.style.opacity = '1';
+                        slide.style.transform = 'translateY(0)';
+                        slide.style.pointerEvents = 'auto';
+                    } else {
+                        slide.style.opacity = '0';
+                        slide.style.transform = i < currentSlide ? 'translateY(-15px)' : 'translateY(15px)';
+                        slide.style.pointerEvents = 'none';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
