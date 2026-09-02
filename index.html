@@ -281,13 +281,18 @@
     <!-- Section 2: Building Amenities (Parallax Blueprint) -->
     <section id="amenities-section" class="bg-[#080b10] relative z-30 h-[400vh]">
         <div class="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-[#080b10]">
-            
-            <!-- Dynamic Background Glow -->
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-[#080b10]/80 to-[#080b10] z-0"></div>
 
-            <div id="amenities-header" class="text-center w-full max-w-4xl z-10 transition-opacity duration-300 absolute top-16 md:top-24 left-1/2 -translate-x-1/2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-3">
-                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Dynamic Background Glow -->
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-[#080b10]/80 to-[#080b10] z-0">
+            </div>
+
+            <div id="amenities-header"
+                class="text-center w-full max-w-4xl z-10 transition-opacity duration-300 absolute top-16 md:top-24 left-1/2 -translate-x-1/2">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-xs font-semibold uppercase tracking-widest mb-3">
+                    <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         <path d="m9 12 2 2 4-4" />
                     </svg>
@@ -302,9 +307,11 @@
             </div>
 
             <!-- Central Parallax Blueprint -->
-            <div id="blueprint-center" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[50vh] opacity-0 scale-95 transition-all duration-75 flex items-center justify-center pointer-events-none z-10">
+            <div id="blueprint-center"
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[50vh] opacity-0 scale-95 transition-all duration-75 flex items-center justify-center pointer-events-none z-10">
                 <!-- Abstract Isometric Building Wireframe SVG -->
-                <svg viewBox="0 0 800 800" class="w-full h-full text-amber-500/20 drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                <svg viewBox="0 0 800 800"
+                    class="w-full h-full text-amber-500/20 drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
                     <g fill="none" stroke="currentColor" stroke-width="2">
                         <!-- Base Grid -->
                         <path d="M400,600 L200,500 L400,400 L600,500 Z" />
@@ -327,96 +334,124 @@
 
             <!-- Orbiting Cards Container -->
             <div class="relative w-full max-w-6xl mx-auto h-[60vh] mt-32 z-20 pointer-events-none">
-                
+
                 <!-- Solar (Top Left) -->
-                <div class="blueprint-card absolute top-[0%] left-[5%] md:left-[10%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
+                <div
+                    class="blueprint-card absolute top-[0%] left-[5%] md:left-[10%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="4" />
-                                <path d="M12 2v2" /><path d="M12 20v2" />
-                                <path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" />
-                                <path d="M2 12h2" /><path d="M20 12h2" />
+                                <path d="M12 2v2" />
+                                <path d="M12 20v2" />
+                                <path d="m4.93 4.93 1.41 1.41" />
+                                <path d="m17.66 17.66 1.41 1.41" />
+                                <path d="M2 12h2" />
+                                <path d="M20 12h2" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white mb-1">65kWp Solar PV</h3>
-                            <p class="text-[12px] text-slate-400 leading-relaxed">Dedicated rooftop array offsetting common area power.</p>
+                            <p class="text-[12px] text-slate-400 leading-relaxed">Dedicated rooftop array offsetting
+                                common area power.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Generator (Top Right) -->
-                <div class="blueprint-card absolute top-[10%] right-[5%] md:right-[10%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
+                <div
+                    class="blueprint-card absolute top-[10%] right-[5%] md:right-[10%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white mb-1">100% Back-up Generator</h3>
-                            <p class="text-[12px] text-slate-400 leading-relaxed">Dual 500kVA transformers for 24/7 resilience.</p>
+                            <p class="text-[12px] text-slate-400 leading-relaxed">Dual 500kVA transformers for 24/7
+                                resilience.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Glass (Middle Left) -->
-                <div class="blueprint-card absolute top-[40%] left-[5%] md:left-[2%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
+                <div
+                    class="blueprint-card absolute top-[40%] left-[5%] md:left-[2%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="12 2 2 7 12 12 22 7 12 2" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white mb-1">Low-E Thermal Glass</h3>
-                            <p class="text-[12px] text-slate-400 leading-relaxed">Double-glazed curtain walls eliminating solar glare.</p>
+                            <p class="text-[12px] text-slate-400 leading-relaxed">Double-glazed curtain walls
+                                eliminating solar glare.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- VRF (Middle Right) -->
-                <div class="blueprint-card absolute top-[50%] right-[5%] md:right-[2%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
+                <div
+                    class="blueprint-card absolute top-[50%] right-[5%] md:right-[2%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white mb-1">Inverter VRF AC</h3>
-                            <p class="text-[12px] text-slate-400 leading-relaxed">Multi-zone independent control with MERV-13 filters.</p>
+                            <p class="text-[12px] text-slate-400 leading-relaxed">Multi-zone independent control with
+                                MERV-13 filters.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Fiber (Bottom Left) -->
-                <div class="blueprint-card absolute top-[80%] left-[5%] md:left-[15%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
+                <div
+                    class="blueprint-card absolute top-[80%] left-[5%] md:left-[15%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12.55a11 11 0 0 1 14.08 0" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white mb-1">Dual Fiber Backbone</h3>
-                            <p class="text-[12px] text-slate-400 leading-relaxed">Carrier-neutral risers for intensive workloads.</p>
+                            <p class="text-[12px] text-slate-400 leading-relaxed">Carrier-neutral risers for intensive
+                                workloads.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Parking (Bottom Right) -->
-                <div class="blueprint-card absolute top-[90%] right-[5%] md:right-[15%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
+                <div
+                    class="blueprint-card absolute top-[90%] right-[5%] md:right-[15%] w-[85vw] md:w-[340px] p-6 rounded-[1.5rem] bg-gradient-to-b from-[#111620]/90 to-[#0a0f16]/90 backdrop-blur-md border border-amber-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-0 translate-y-10 transition-all duration-75">
                     <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 shrink-0">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
                             </svg>
                         </div>
                         <div>
                             <h3 class="font-bold text-base text-white mb-1">Paved Parking</h3>
-                            <p class="text-[12px] text-slate-400 leading-relaxed">Spacious drop-off with 24/7 CCTV security detail.</p>
+                            <p class="text-[12px] text-slate-400 leading-relaxed">Spacious drop-off with 24/7 CCTV
+                                security detail.</p>
                         </div>
                     </div>
                 </div>
@@ -552,359 +587,191 @@
         </div>
     </div>
 
-    <!-- Section 4: Available Spaces -->
-    <section id="available-spaces" class="py-24 bg-[#080b10] relative border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16">
+    <!-- Section 4: Available Spaces (Horizontal Scroll) -->
+    <section id="available-spaces" class="relative bg-[#080b10] border-t border-white/10 h-[400vh] z-20">
+        <div class="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
+
+            <div class="px-4 sm:px-6 lg:px-12 w-full z-10 flex-shrink-0 mb-8 max-w-7xl mx-auto">
                 <span class="text-xs font-bold tracking-[0.2em] text-amber-500 uppercase mb-3 block">LEASING
                     OPPORTUNITIES</span>
                 <h2 class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">Available Spaces</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <!-- Horizontal Track -->
+            <div id="spaces-track"
+                class="flex gap-8 px-4 sm:px-6 lg:px-12 pb-12 w-max will-change-transform items-stretch relative z-20">
+
                 <!-- Unit G-01 -->
                 <div
-                    class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span
-                                class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">G-01</span>
-                            <span class="text-sm text-slate-400 ml-3">Ground Floor (Level 1)</span>
-                            <h3 class="text-2xl font-bold text-white mb-2">Prime Corner Retail & Flagship Showroom</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">The premier signature unit of Corner
-                                Square. Unmatched dual-street exposure, tall structural column framing, and direct
-                                access from the main entrance forecourt.</p>
-                        </div>
+                    class="w-[340px] md:w-[450px] flex-shrink-0 bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group flex flex-col">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="font-mono text-lg font-bold text-amber-400 px-4 py-2 rounded-lg bg-amber-400/10 border border-amber-400/20">G-01</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Ground Floor</span>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Prime Corner Retail & Flagship Showroom</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">The premier signature unit of Corner Square.
+                        Unmatched dual-street exposure, tall structural column framing, and direct access from the main
+                        entrance forecourt.</p>
 
-                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                    <div class="grid grid-cols-2 gap-4 py-6 border-t border-white/10 mt-auto">
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
-                            <span class="text-xl font-bold text-white">320 sqm <span
-                                    class="text-sm font-normal text-slate-400">(3,444 sqft)</span></span>
+                            <span class="text-xl font-bold text-white">320 sqm</span>
                         </div>
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling
                                 Height</span>
                             <span class="text-xl font-bold text-white">4.80m</span>
                         </div>
-                        <div class="col-span-2">
-                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
-                            <span class="text-white font-medium">28 meters double-sided glass frontage</span>
-                        </div>
                     </div>
-
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Direct entrance from curved illuminated stairway
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Maximum pedestrian & vehicular visibility
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Provisions for commercial exhaust & heavy power
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Floor-to-ceiling panoramic glass panels
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between mt-auto">
+                    <div class="flex items-center justify-between mt-4">
                         <div class="text-amber-400 font-bold">$45 / sqm / mo</div>
                         <button
-                            class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
-                            INQUIRE
-                        </button>
+                            class="px-6 py-2 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm transition-colors">INQUIRE</button>
                     </div>
                 </div>
 
                 <!-- Unit G-02 -->
                 <div
-                    class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span
-                                class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">G-02</span>
-                            <span class="text-sm text-slate-400 ml-3">Ground Floor (Level 1)</span>
-                            <h3 class="text-2xl font-bold text-white mb-2">Boutique Commercial & Banking Hall</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">Ideal for premium financial institutions,
-                                high-end optical/medical clinics, or specialized retail concepts looking for prominent
-                                ground level presence.</p>
-                        </div>
+                    class="w-[340px] md:w-[450px] flex-shrink-0 bg-[#0c121b] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group flex flex-col">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="font-mono text-lg font-bold text-amber-400 px-4 py-2 rounded-lg bg-amber-400/10 border border-amber-400/20">G-02</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Ground Floor</span>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Boutique Commercial & Banking Hall</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Ideal for premium financial institutions,
+                        high-end optical/medical clinics, or specialized retail concepts looking for prominent ground
+                        level presence.</p>
 
-                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                    <div class="grid grid-cols-2 gap-4 py-6 border-t border-white/10 mt-auto">
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
-                            <span class="text-xl font-bold text-white">185 sqm <span
-                                    class="text-sm font-normal text-slate-400">(1,991 sqft)</span></span>
+                            <span class="text-xl font-bold text-white">185 sqm</span>
                         </div>
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling
                                 Height</span>
                             <span class="text-xl font-bold text-white">4.50m</span>
                         </div>
-                        <div class="col-span-2">
-                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
-                            <span class="text-white font-medium">16 meters glass facade</span>
-                        </div>
                     </div>
-
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Dedicated side driveway access & drop-off
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            High foot-traffic arterial exposure
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Plumbing stub-outs for pantry/restroom
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Energy-efficient VRF AC pre-installed
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between mt-auto">
+                    <div class="flex items-center justify-between mt-4">
                         <div class="text-amber-400 font-bold">$40 / sqm / mo</div>
                         <button
-                            class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
-                            INQUIRE
-                        </button>
+                            class="px-6 py-2 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm transition-colors">INQUIRE</button>
                     </div>
                 </div>
 
                 <!-- Unit L2-01 -->
                 <div
-                    class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span
-                                class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">L2-01</span>
-                            <span class="text-sm text-slate-400 ml-3">Second Floor (Level 2)</span>
-                            <h3 class="text-2xl font-bold text-white mb-2">Full Second-Floor Corporate Headquarters</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">An expansive, column-optimized creative
-                                office floorplate. High ceilings, panoramic natural light, and tranquil views of
-                                surrounding tropical landscaping.</p>
-                        </div>
+                    class="w-[340px] md:w-[450px] flex-shrink-0 bg-[#0e141f] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group flex flex-col">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="font-mono text-lg font-bold text-amber-400 px-4 py-2 rounded-lg bg-amber-400/10 border border-amber-400/20">L2-01</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Second Floor</span>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Corporate Headquarters</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">An expansive, column-optimized creative
+                        office floorplate. High ceilings, panoramic natural light, and tranquil views of surrounding
+                        tropical landscaping.</p>
 
-                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                    <div class="grid grid-cols-2 gap-4 py-6 border-t border-white/10 mt-auto">
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
-                            <span class="text-xl font-bold text-white">680 sqm <span
-                                    class="text-sm font-normal text-slate-400">(7,319 sqft)</span></span>
+                            <span class="text-xl font-bold text-white">680 sqm</span>
                         </div>
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling
                                 Height</span>
                             <span class="text-xl font-bold text-white">4.20m</span>
                         </div>
-                        <div class="col-span-2">
-                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
-                            <span class="text-white font-medium">360° perimeter glass framing with tree canopy
-                                views</span>
-                        </div>
                     </div>
-
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Warm wood under-soffit cantilever perimeter
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Abundant natural daylight from 4 elevations
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Dual high-speed telecom fiber feeds
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Subdivisible into 2 equal wings (340 sqm each)
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between mt-auto">
+                    <div class="flex items-center justify-between mt-4">
                         <div class="text-amber-400 font-bold">$32 / sqm / mo</div>
                         <button
-                            class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
-                            INQUIRE
-                        </button>
+                            class="px-6 py-2 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm transition-colors">INQUIRE</button>
                     </div>
                 </div>
 
                 <!-- Unit L2-02 -->
                 <div
-                    class="bg-[#0a0f16] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span
-                                class="font-mono text-xs font-bold text-amber-400 px-3 py-1 rounded bg-amber-400/10 border border-amber-400/20 inline-block mb-3">L2-02</span>
-                            <span class="text-sm text-slate-400 ml-3">Second Floor (Level 2)</span>
-                            <h3 class="text-2xl font-bold text-white mb-2">Executive Tech & Creative Studio Suite</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed">Tailored for innovative tech firms, law
-                                partnerships, and design consultancies seeking an inspiring, sustainable workspace with
-                                world-class presence.</p>
-                        </div>
+                    class="w-[340px] md:w-[450px] flex-shrink-0 bg-[#111624] border border-white/10 rounded-2xl p-8 hover:border-amber-500/50 transition-colors group flex flex-col">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span
+                            class="font-mono text-lg font-bold text-amber-400 px-4 py-2 rounded-lg bg-amber-400/10 border border-amber-400/20">L2-02</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Second Floor</span>
                     </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Executive Tech Studio</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Tailored for innovative tech firms and design
+                        consultancies seeking an inspiring, sustainable workspace with world-class presence.</p>
 
-                    <div class="grid grid-cols-2 gap-4 py-6 border-y border-white/10 my-6">
+                    <div class="grid grid-cols-2 gap-4 py-6 border-t border-white/10 mt-auto">
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Area</span>
-                            <span class="text-xl font-bold text-white">265 sqm <span
-                                    class="text-sm font-normal text-slate-400">(2,852 sqft)</span></span>
+                            <span class="text-xl font-bold text-white">265 sqm</span>
                         </div>
                         <div>
                             <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Ceiling
                                 Height</span>
                             <span class="text-xl font-bold text-white">4.20m</span>
                         </div>
-                        <div class="col-span-2">
-                            <span class="block text-xs text-slate-500 uppercase tracking-wider mb-1">Frontage</span>
-                            <span class="text-white font-medium">East & South panoramic glazing</span>
-                        </div>
                     </div>
-
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Turnkey open-plan architectural layout
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Acoustically insulated double-pane glass
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Direct access to rooftop terrace & executive lounge
-                        </div>
-                        <div class="flex items-center gap-3 text-sm text-slate-300">
-                            <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            100% solar and generator emergency backup
-                        </div>
-                    </div>
-
-                    <div class="flex items-center justify-between mt-auto">
+                    <div class="flex items-center justify-between mt-4">
                         <div class="text-amber-400 font-bold">$34 / sqm / mo</div>
                         <button
-                            class="px-6 py-2.5 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm tracking-wide transition-colors">
-                            INQUIRE
-                        </button>
+                            class="px-6 py-2 rounded-lg bg-white/5 hover:bg-amber-500 text-white hover:text-black font-semibold text-sm transition-colors">INQUIRE</button>
                     </div>
                 </div>
 
+                <!-- Spacer -->
+                <div class="w-[4px] md:w-[12px] flex-shrink-0"></div>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: CTA / Inquiry -->
-    <section class="py-32 relative overflow-hidden bg-black border-t border-white/5">
+    <!-- Section 5: Cinematic CTA -->
+    <section id="cta-section"
+        class="py-32 relative overflow-hidden h-screen flex items-center justify-center bg-[#080b10] border-t border-white/5">
         <div class="absolute inset-0 bg-gradient-to-t from-amber-500/10 to-transparent"></div>
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
-            <h2 class="font-display text-4xl md:text-6xl font-bold text-white mb-6">Secure Your Position.</h2>
-            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">Corner Square offers an unparalleled
-                environment for businesses seeking distinction. Connect with our leasing team for private viewings and
-                architectural plans.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button
-                    class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold tracking-wide transition-colors">
-                    CONTACT LEASING TEAM
-                </button>
-                <button
-                    class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-bold tracking-wide transition-colors">
-                    DOWNLOAD BROCHURE
-                </button>
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-10 w-full">
+
+            <h2 id="cta-title"
+                class="font-display text-5xl md:text-8xl font-bold text-white mb-8 tracking-tight transform-gpu transition-all duration-75 will-change-transform">
+                Secure Your<br><span class="text-amber-500">Position.</span>
+            </h2>
+
+            <div id="cta-content" class="transform-gpu transition-all duration-75">
+                <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">Corner Square offers an
+                    unparalleled environment for businesses seeking distinction. Connect with our leasing team for
+                    private viewings.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <button
+                        class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-bold tracking-wide transition-all hover:scale-105 shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+                        CONTACT LEASING TEAM
+                    </button>
+                    <button
+                        class="w-full sm:w-auto px-10 py-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-bold tracking-wide transition-all hover:scale-105">
+                        DOWNLOAD BROCHURE
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#05070a] border-t border-white/10 py-16">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+    <!-- Standard Document Flow Footer (Fixed visibility issue) -->
+    <footer class="bg-black border-t border-white/10 py-16 relative z-30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
-                    <div class="text-2xl font-display font-bold tracking-tight text-white mb-4">CORNERSQUARE</div>
+                    <div class="text-3xl font-display font-bold tracking-tight text-white mb-4">CORNERSQUARE</div>
                     <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
                         A premium commercial destination designed for businesses, experiences, and opportunities to
                         grow. Unmatched architecture and thoughtful design.
                     </p>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold mb-4 tracking-wider text-sm">SPACES</h4>
+                    <h4 class="text-white font-bold mb-4 tracking-widest text-xs uppercase">Spaces</h4>
                     <ul class="space-y-3 text-sm text-slate-400">
                         <li><a href="#" class="hover:text-amber-500 transition-colors">Ground Floor Retail</a></li>
                         <li><a href="#" class="hover:text-amber-500 transition-colors">Boutique Commercial</a></li>
@@ -913,19 +780,16 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold mb-4 tracking-wider text-sm">CONTACT</h4>
+                    <h4 class="text-white font-bold mb-4 tracking-widest text-xs uppercase">Contact</h4>
                     <ul class="space-y-3 text-sm text-slate-400">
                         <li>leasing@cornersquare.com</li>
                         <li>+1 (555) 123-4567</li>
-                        <li class="pt-2">
-                            100 Corner Square Ave,<br>
-                            Innovation District, CA 90210
-                        </li>
+                        <li class="pt-2">100 Corner Square Ave,<br>Innovation District, CA</li>
                     </ul>
                 </div>
             </div>
             <div
-                class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-xs text-slate-500">
+                class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 text-xs text-slate-600">
                 <p>&copy; 2026 Corner Square Commercial. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
@@ -934,6 +798,8 @@
             </div>
         </div>
     </footer>
+
+
 
     <script>
         // --- Navbar Scroll Logic ---
@@ -1115,7 +981,7 @@
                 const rect = amenitiesSection.getBoundingClientRect();
                 const sectionHeight = amenitiesSection.offsetHeight;
                 const windowHeight = window.innerHeight;
-                
+
                 const scrollableDistance = sectionHeight - windowHeight;
                 const scrolledDistance = -rect.top;
 
@@ -1127,7 +993,7 @@
                     let bpProgress = Math.min(1, progress / 0.2);
                     blueprintCenter.style.opacity = bpProgress;
                     blueprintCenter.style.transform = `translate(-50%, -50%) scale(${0.95 + (bpProgress * 0.05)})`;
-                    
+
                     // Fade in cards sequentially
                     const numCards = blueprintCards.length;
                     // Available range for cards to pop in is 0.2 to 0.9
@@ -1138,7 +1004,7 @@
                     blueprintCards.forEach((card, index) => {
                         const start = cardStartRange + (index * perCardDelay);
                         const end = start + 0.15; // takes 15% scroll to fully appear
-                        
+
                         let cardProgress = 0;
                         if (progress > start) {
                             cardProgress = Math.min(1, (progress - start) / (end - start));
@@ -1220,6 +1086,74 @@
                 }
             }
         });
+        // Animation 4: Horizontal Scroll (Section 4)
+        const availableSpaces = document.getElementById('available-spaces');
+        const spacesTrack = document.getElementById('spaces-track');
+
+        if (availableSpaces && spacesTrack) {
+            window.addEventListener('scroll', () => {
+                const rect = availableSpaces.getBoundingClientRect();
+                const sectionHeight = availableSpaces.offsetHeight;
+                const windowHeight = window.innerHeight;
+
+                const scrollableDistance = sectionHeight - windowHeight;
+                const scrolledDistance = -rect.top;
+
+                if (scrolledDistance > -windowHeight && scrolledDistance < sectionHeight) {
+                    let progress = scrolledDistance / scrollableDistance;
+                    progress = Math.max(0, Math.min(1, progress));
+
+                    // Calculate max horizontal scroll based on track width vs viewport width
+                    const trackScrollWidth = spacesTrack.scrollWidth;
+                    const maxTranslate = trackScrollWidth - window.innerWidth;
+
+                    // Apply translation
+                    if (maxTranslate > 0) {
+                        const currentTranslate = maxTranslate * progress;
+                        spacesTrack.style.transform = `translateX(-${currentTranslate}px)`;
+                    }
+                }
+            }, { passive: true });
+        }
+
+        // Animation 5: Cinematic CTA
+        const ctaSection = document.getElementById('cta-section');
+        const ctaTitle = document.getElementById('cta-title');
+        const ctaContent = document.getElementById('cta-content');
+
+        if (ctaSection && ctaTitle && ctaContent) {
+            // Initial states
+            ctaTitle.style.transform = 'scale(2)';
+            ctaTitle.style.filter = 'blur(10px)';
+            ctaTitle.style.opacity = '0';
+            ctaContent.style.transform = 'translateY(50px)';
+            ctaContent.style.opacity = '0';
+
+            window.addEventListener('scroll', () => {
+                const rect = ctaSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // When CTA starts entering viewport
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    const progress = Math.max(0, Math.min(1, 1 - (rect.top / windowHeight)));
+
+                    // Title scales from 2 to 1, blur from 10px to 0, opacity 0 to 1
+                    const scale = 2 - progress;
+                    const blur = 10 * (1 - progress);
+                    const opacity = progress;
+
+                    ctaTitle.style.transform = `scale(${scale})`;
+                    ctaTitle.style.filter = `blur(${blur}px)`;
+                    ctaTitle.style.opacity = opacity;
+
+                    // Content slides up and fades in, delayed slightly
+                    let contentProgress = Math.max(0, (progress - 0.3) / 0.7);
+                    const yOffset = 50 * (1 - contentProgress);
+                    ctaContent.style.transform = `translateY(${yOffset}px)`;
+                    ctaContent.style.opacity = contentProgress;
+                }
+            }, { passive: true });
+        }
     </script>
 </body>
 
